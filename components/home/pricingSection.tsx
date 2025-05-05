@@ -1,7 +1,8 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import BgGradient from "../common/bgGradient";
+import { Button } from "../ui/button";
 
 type PricingProps = {
   id: string;
@@ -22,7 +23,7 @@ const Plans = [
       "5 PDF Uploads/Month",
       "Standard Processing Speed ",
       "Email Support",
-      "Simple & Intuitive Interface"
+      "Simple & Intuitive Interface",
     ],
     paymentLink: "",
   },
@@ -101,12 +102,23 @@ function PricingCard({ id, name, paragraph, price, feature }: PricingProps) {
             ))}
           </div>
           <div className="flex items-center justify-center mt-4 w-full">
-            <Link
-              href="/#"
-              className="flex items-center justify-center text-xl font-bold rounded-md bg-linear-to-r from-blue-400 to-blue-700 w-full text-white py-2 hover:from-blue-700 hover:to-blue-400 transition-all duration-300"
+            <Button
+              variant={"link"}
+              style={{
+                textDecoration: "none",
+              }}
+              className=" flex items-center justify-center w-[210px] bg-linear-to-b from-blue-900 via-blue-700 to-blue-500 text-white font-bold text-xl py-4 rounded-md hover:from-blue-700 hover:via-blue-500 hover:to-blue-300 transition-all duration-300"
             >
-              Buy Now
-            </Link>
+              <Link
+                href="/#"
+                className="flex items-center justify-center "
+                style={{
+                  textDecoration: "none",
+                }}
+              >
+                Buy Now
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
@@ -118,7 +130,7 @@ export default function PricingSection({}) {
   return (
     <>
       <section>
-      <BgGradient/>
+        <BgGradient />
         <div className="py-12 lg:py-23 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-12">
           <div className="flex flex-col items-center justify-center mb-13">
             <h2 className="font-bold text-2xl uppercase mb-4 text-blue-500 text-center">
