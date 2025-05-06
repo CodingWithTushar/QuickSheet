@@ -1,4 +1,5 @@
 import BgGradient from "@/components/common/bgGradient";
+import { EmptySummaryState } from "@/components/summary/emptySummary";
 import { SummaryCard } from "@/components/summary/summaryCard";
 import { Button } from "@/components/ui/button";
 import { GetSummaries } from "@/lib/summaries";
@@ -9,10 +10,10 @@ import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
   const uploadlimit = 5;
-  const user =  await currentUser()
-  const userId = user?.id
+  const user = await currentUser();
+  const userId = user?.id;
   if (!userId) {
-    return redirect('sign-in')
+    return redirect("sign-in");
   }
   const summaries = await GetSummaries(userId);
 
@@ -60,11 +61,15 @@ export default async function DashboardPage() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 sm:px-0 ">
-            {summaries.map((summary, index) => (
-                <SummaryCard key={index} summary={summary}/>
-            ))}
-          </div>
+          {summaries.length === 0 ? (
+            <EmptySummaryState />
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 sm:px-0 ">
+              {summaries.map((summary, index) => (
+                <SummaryCard key={index} summary={summary} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </main>
