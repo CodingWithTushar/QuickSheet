@@ -1,9 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import logo from "@/app/favicon.png";
-import { Button } from "../ui/button";
 import NavLink from "./nav-link";
-import { SignedIn, SignedOut, SignIn, SignUp, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const Header = () => {
   const isLoggedIn = false;

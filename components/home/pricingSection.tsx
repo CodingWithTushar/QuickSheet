@@ -1,8 +1,8 @@
 import { cn } from "@/utils/utils";
 import { Check } from "lucide-react";
 import Link from "next/link";
-import BgGradient from "../common/bgGradient";
-import { Button } from "../ui/button";
+import BgGradient from "@/components/common/bgGradient";
+import { Button } from "@/components/ui/button";
 
 type PricingProps = {
   id: string;

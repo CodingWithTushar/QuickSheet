@@ -1,5 +1,8 @@
 "use client";
-import {generatePdfSummary, storePDFSummaryAction} from "@/app/actions/uploadaction";
+import {
+  generatePdfSummary,
+  storePDFSummaryAction,
+} from "@/app/actions/uploadaction";
 import BgGradient from "@/components/common/bgGradient";
 import Uploadform from "@/components/upload/uploadform";
 import Uploadheader from "@/components/upload/uploadheader";
@@ -76,29 +79,29 @@ const UploadPage = () => {
 
       const { data = null, message = null } = result || {};
 
-      console.log({data}, {result});
-      
+      console.log({ data }, { result });
+
       if (data) {
         let storeResult: any;
         toast.success("Saving the Pdf...");
-       if (data.summary) {
-        storeResult =  await storePDFSummaryAction({
-          fileUrl: response[0].serverData.file.ufsUrl,
-          summary: data.summary,
-          title: data.title,
-          fileName: file.name
-        })
-        toast.success("📄Summary Generated and Saved")
-        formRef.current?.reset();
-        Router.push(`/summaries/${storeResult.data.id}`)
-       }  
+        if (data.summary) {
+          storeResult = await storePDFSummaryAction({
+            fileUrl: response[0].serverData.file.ufsUrl,
+            summary: data.summary,
+            title: data.title,
+            fileName: file.name,
+          });
+          toast.success("📄Summary Generated and Saved");
+          formRef.current?.reset();
+          Router.push(`/summaries/${storeResult.data.id}`);
+        }
       }
     } catch (e) {
       console.log(`Error Occured ${e}`);
       setisLoading(false);
       formRef.current?.reset();
-    }finally{
-      setisLoading(false)
+    } finally {
+      setisLoading(false);
     }
   };
 

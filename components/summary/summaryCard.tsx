@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card } from "../ui/card";
+import { Card } from "@/components/ui/card";
 import { FileText } from "lucide-react";
 import { cn, formatFileName } from "@/utils/utils";
 import { formatDistanceToNow } from "date-fns";

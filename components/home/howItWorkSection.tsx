@@ -5,7 +5,7 @@ import {
   MoveRightIcon,
 } from "lucide-react";
 import { ReactNode } from "react";
-import BgGradient from "../common/bgGradient";
+import BgGradient from "@/components/common/bgGradient";
 
 type steps = {
   label: string;
