@@ -4,9 +4,11 @@ import {
   storePDFSummaryAction,
 } from "@/app/actions/uploadaction";
 import BgGradient from "@/components/common/bgGradient";
+import { MotionDiv } from "@/components/common/motionWrapper";
 import Uploadform from "@/components/upload/uploadform";
 import Uploadheader from "@/components/upload/uploadheader";
 import { useUploadThing } from "@/lib/uploadthing";
+import { ContainerVariants } from "@/utils/constants";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
@@ -108,7 +110,12 @@ const UploadPage = () => {
   return (
     <section className="min-h-screen  ">
       <BgGradient />
-      <div className="mx-auto  max-w-7xl px-6 py-24 sm:py-32">
+      <MotionDiv
+        variants={ContainerVariants}
+        initial="hidden"
+        animate="visible"
+        className="mx-auto  max-w-7xl px-6 py-24 sm:py-32"
+      >
         <div className="flex flex-col items-center justify-center gap-6 text-center ">
           <Uploadheader />
           <div className="w-full flex flex-col gap-8 mx-auto max-w-2xl">
@@ -119,7 +126,7 @@ const UploadPage = () => {
             />
           </div>
         </div>
-      </div>
+      </MotionDiv>
     </section>
   );
 };

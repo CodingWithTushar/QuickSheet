@@ -4,6 +4,8 @@ import { FileText } from "lucide-react";
 import { cn, formatFileName } from "@/utils/utils";
 import { formatDistanceToNow } from "date-fns";
 import DeleteButton from "./deleteButton";
+import { MotionDiv } from "../common/motionWrapper";
+import { ItemsVariants } from "@/utils/constants";
 
 interface SummaryHeaderPorps {
   fileUrl: string;
@@ -46,7 +48,15 @@ const StatusBagde = ({ status }: { status: string }) => {
 
 export const SummaryCard = ({ summary }: { summary: any }) => {
   return (
-    <div>
+    <MotionDiv
+      variants={ItemsVariants}
+      initial="hidden"
+      animate="visible"
+      whileHover={{
+        scale: 1.03,
+        transition: { duration: 0.2, ease: "easeOut" },
+      }}
+    >
       <Card className="relative h-full hover:scale-105 transition-all duration-200">
         <div className="absolute top-2 right-2 ">
           <DeleteButton summaryId={summary.id} />
@@ -68,6 +78,6 @@ export const SummaryCard = ({ summary }: { summary: any }) => {
           </div>
         </Link>
       </Card>
-    </div>
+    </MotionDiv>
   );
 };

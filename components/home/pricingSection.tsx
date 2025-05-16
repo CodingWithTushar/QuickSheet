@@ -3,6 +3,12 @@ import { Check } from "lucide-react";
 import Link from "next/link";
 import BgGradient from "@/components/common/bgGradient";
 import { Button } from "@/components/ui/button";
+import { MotionDiv, MotionSection } from "../common/motionWrapper";
+import {
+  ContainerVariants,
+  ItemsVariants,
+  ListVariants,
+} from "@/utils/constants";
 
 type PricingProps = {
   id: string;
@@ -55,10 +61,19 @@ const Plans = [
   },
 ];
 
-function PricingCard({ id, name, paragraph, price, feature }: PricingProps) {
+function PricingCard({
+  id,
+  name,
+  paragraph,
+  price,
+  feature,
+  paymentLink,
+}: PricingProps) {
   return (
     <>
-      <div
+      <MotionDiv
+        variants={ListVariants}
+        whileHover={{ scale: 1.03 }}
         className={cn(
           "relative flex flex-col w-full max-w-lag hover:scale-105 hover:transition-all duration-200 rounded-lg z-10 hover:border-blue-500 hover:border-2",
           id === "Pro" && "border-blue-500 border-2 "
@@ -71,10 +86,16 @@ function PricingCard({ id, name, paragraph, price, feature }: PricingProps) {
               "bg-linear-to-br from-blue-transparent via-blue-100 to-blue-200"
           )}
         >
-          <div className="flex items-center justify-center text-4xl font-bold capitalize">
+          <MotionDiv
+            variants={ListVariants}
+            className="flex items-center justify-center text-4xl font-bold capitalize"
+          >
             {name}
-          </div>
-          <div className="flex items-center justify-center gap-1 ">
+          </MotionDiv>
+          <MotionDiv
+            variants={ListVariants}
+            className="flex items-center justify-center gap-1 "
+          >
             <div>
               <p className="relative inline-block font-extrabold my-1 text-3xl bg-gradient-to-r from-blue-400 via-blue-600 to-blue-700 bg-clip-text text-transparent">
                 ${price}
@@ -84,9 +105,14 @@ function PricingCard({ id, name, paragraph, price, feature }: PricingProps) {
               <span className="text-gray-800 font-medium">USD</span>
               <span className="text-gray-800 font-medium">/month</span>
             </div>
-          </div>
-          <div className="text-xs text-gray-700 pb-3">{paragraph}</div>
-          <div className="max-w-3xl mx-auto">
+          </MotionDiv>
+          <MotionDiv
+            variants={ListVariants}
+            className="text-xs text-gray-700 pb-3"
+          >
+            {paragraph}
+          </MotionDiv>
+          <MotionDiv variants={ListVariants} className="max-w-3xl mx-auto">
             {feature.map((feature) => (
               <li
                 key={feature}
@@ -100,8 +126,11 @@ function PricingCard({ id, name, paragraph, price, feature }: PricingProps) {
                 {feature}
               </li>
             ))}
-          </div>
-          <div className="flex items-center justify-center mt-4 w-full">
+          </MotionDiv>
+          <MotionDiv
+            variants={ListVariants}
+            className="flex items-center justify-center mt-4 w-full"
+          >
             <Button
               variant={"link"}
               style={{
@@ -119,9 +148,9 @@ function PricingCard({ id, name, paragraph, price, feature }: PricingProps) {
                 Buy Now
               </Link>
             </Button>
-          </div>
+          </MotionDiv>
         </div>
-      </div>
+      </MotionDiv>
     </>
   );
 }
@@ -129,21 +158,31 @@ function PricingCard({ id, name, paragraph, price, feature }: PricingProps) {
 export default function PricingSection({}) {
   return (
     <>
-      <section>
+      <MotionSection
+        variants={ContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="relative overflow-hidden"
+        id="pricing"
+      >
         <BgGradient />
         <div className="py-12 lg:py-23 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-12">
-          <div className="flex flex-col items-center justify-center mb-13">
+          <MotionDiv
+            variants={ItemsVariants}
+            className="flex flex-col items-center justify-center mb-13"
+          >
             <h2 className="font-bold text-2xl uppercase mb-4 text-blue-500 text-center">
               Pricing
             </h2>
-          </div>
+          </MotionDiv>
           <div className="relative flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-8">
             {Plans.map((plan) => (
               <PricingCard key={plan.id} {...plan} />
             ))}
           </div>
         </div>
-      </section>
+      </MotionSection>
     </>
   );
 }

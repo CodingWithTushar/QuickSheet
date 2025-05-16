@@ -1,4 +1,5 @@
 import BgGradient from "@/components/common/bgGradient";
+import { MotionDiv } from "@/components/common/motionWrapper";
 import { SourceInfo } from "@/components/summary/sourceInfo";
 import { SummaryHeader } from "@/components/summary/summaryHeader";
 import { SummaryViewer } from "@/components/summary/summaryViewer";
@@ -33,23 +34,32 @@ export default async function SummaryPage(props: {
       <BgGradient />
       <div className="container mx-auto flex flex-col gap-3  ">
         <div className="px-4 sm:px-6 lg:px-8 py-6  sm:py-12 ld:py-24 ">
-          <div className="flex flex-col">
+          <MotionDiv
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col"
+          >
             <SummaryHeader
               title={title}
               createdAt={created_at}
               readingTime={readingTime}
             />
-          </div>
-          {file_name && (
-            <SourceInfo
-              fileName={file_name}
-              originalFileUrl={original_file_url}
-              title={title}
-              createdAt={created_at}
-              summaryText={summary_text}
-            />
-          )}
-          <div className="relative  mt-4 sm:mt-8 lg:mt-16">
+            {file_name && (
+              <SourceInfo
+                fileName={file_name}
+                originalFileUrl={original_file_url}
+                title={title}
+                createdAt={created_at}
+                summaryText={summary_text}
+              />
+            )}
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="relative  mt-4 sm:mt-8 lg:mt-16"
+            ></MotionDiv>
             <div className="relative p-4 sm:p-6 lg:p-8 bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-xl border border-rose-100/30 transition-all duration-300 hover:shadow-2xl hover:bg-white/90 max-w-4xl mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-rose-50/50 via-orange-50 to-transparent opacity-50 rounded-2xl sm:rounded-3xl" />
 
@@ -61,7 +71,7 @@ export default async function SummaryPage(props: {
                 <SummaryViewer summary={summary.summary_text} />
               </div>
             </div>
-          </div>
+          </MotionDiv>
         </div>
       </div>
     </div>
