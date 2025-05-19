@@ -29,6 +29,8 @@ const Schema = z.object({
     ),
 });
 
+export const maxDuration = 20;
+
 const UploadPage = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isLoading, setisLoading] = useState(false);
