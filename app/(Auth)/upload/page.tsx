@@ -1,6 +1,7 @@
 "use client";
 import {
   generatePdfSummary,
+  generatePdfText,
   storePDFSummaryAction,
 } from "@/app/actions/uploadaction";
 import BgGradient from "@/components/common/bgGradient";
@@ -9,6 +10,7 @@ import Uploadform from "@/components/upload/uploadform";
 import Uploadheader from "@/components/upload/uploadheader";
 import { useUploadThing } from "@/lib/uploadthing";
 import { ContainerVariants } from "@/utils/constants";
+import { formatFileNameAsTitle } from "@/utils/format_utils";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
@@ -39,8 +41,8 @@ const UploadPage = () => {
     onUploadError: (err) => {
       toast.error("❌Error Occurred while uploading ");
     },
-    onUploadBegin: ({ file }) => {
-      console.log(`Upload has begun for ${file}`);
+    onUploadBegin: () => {
+      console.log(`Upload has begun`);
     },
   });
 
@@ -63,8 +65,6 @@ const UploadPage = () => {
         return;
       }
 
-      toast.success("📄Processing PDF");
-
       const response = await startUpload([file]);
 
       if (!response) {
@@ -73,31 +73,42 @@ const UploadPage = () => {
         return;
       }
 
-      console.log({ response });
+      toast.success("📄Processing PDF");
 
-      toast.success("📄PDF Uploaded");
+      const uploadFileUrl = response[0].ufsUrl;
+      console.log(uploadFileUrl);
 
-      const result = await generatePdfSummary(response);
+      let storeResult: any;
+      const fromattedFileName = formatFileNameAsTitle(file.name);
 
-      const { data = null, message = null } = result || {};
+      const result = await generatePdfText({
+        fileUrl: uploadFileUrl,
+      });
 
-      console.log({ data }, { result });
+      toast.success("📄Generating PDF Summary");
 
-      if (data) {
-        let storeResult: any;
-        toast.success("Saving the Pdf...");
-        if (data.summary) {
-          storeResult = await storePDFSummaryAction({
-            fileUrl: response[0].serverData.file.ufsUrl,
-            summary: data.summary,
-            title: data.title,
-            fileName: file.name,
-          });
-          toast.success("📄Summary Generated and Saved");
-          formRef.current?.reset();
-          Router.push(`/summaries/${storeResult.data.id}`);
-        }
+      const summaryResult = await generatePdfSummary({
+        PdfText: result?.data?.PdfText ?? "",
+        fileName: fromattedFileName,
+      });
+
+      toast.success("📄Saving the Pdf...");
+
+      const { data = null, message = null } = summaryResult || {};
+
+      if (data?.summary) {
+        storeResult = await storePDFSummaryAction({
+          fileUrl: uploadFileUrl,
+          summary: data.summary,
+          title: fromattedFileName,
+          fileName: file.name,
+        });
+        console.log({ storeResult });
+
+        toast.success("📄Summary Generated and Saved");
       }
+      formRef.current?.reset();
+      Router.push(`/summaries/${storeResult.data.id}`);
     } catch (e) {
       console.log(`Error Occured ${e}`);
       setisLoading(false);

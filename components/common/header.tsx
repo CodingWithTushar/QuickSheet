@@ -5,8 +5,6 @@ import NavLink from "./nav-link";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const Header = () => {
-  const isLoggedIn = false;
-
   return (
     <>
       <div>
@@ -26,15 +24,13 @@ const Header = () => {
             </NavLink>
           </div>
           <div className="flex lg:items-center lg:justify-center gap-3 lg:gap-11">
-            <NavLink href={"/#pricing"}>Pricing</NavLink>
             <SignedIn>
               <NavLink href={"/dashboard"}>Your Summaries</NavLink>
             </SignedIn>
           </div>
-          <div className="flex lg:justify-end gap-3 lg:gap-4">
+          <div className="flex items-center lg:justify-end gap-3 lg:gap-4">
             <SignedIn>
               <NavLink href={"/upload"}>Upload a PDF</NavLink>
-              <div className="text-1xl font-semibold">Pro</div>
               <SignedIn>
                 <UserButton />
               </SignedIn>

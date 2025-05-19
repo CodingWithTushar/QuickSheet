@@ -14,49 +14,61 @@ interface PdfSummaryPropes {
   fileName: string;
 }
 
-export async function generatePdfSummary(
-  uploadResponse: Array<{
-    serverData: {
-      userId: string;
-      file: {
-        ufsUrl: string;
-        name: string;
-      };
-    };
-    ufsUrl?: string;
-  }>
+export async function generatePdfText({fileUrl} : {
+  fileUrl : string
+ }
 ) {
-  if (!uploadResponse || uploadResponse.length === 0) {
-    console.error("No upload response received");
-    return;
-  }
 
-  const {
-    serverData: {
-      userId,
-      file: { ufsUrl: pdfUrl, name: fileName },
-    },
-  } = uploadResponse[0];
-
-  if (!pdfUrl) {
+  if (!fileUrl) {
     console.error("File URL not found!");
     return;
   }
 
   try {
-    const PdfText = await fetchandExtractPdfText(pdfUrl);
+    const PdfText = await fetchandExtractPdfText(fileUrl);
     console.log(PdfText);
 
+    if (!PdfText) {
+      return {
+        success: false,
+        message: "Failed to fetch and extract the PDF text",
+        data: null,
+      };
+    }
+
+    return {
+      success: true,
+      message: "PDF text generated successfully ",
+      data: {
+        PdfText,
+      },
+    };
+  } catch (e) {
+    return {
+      success : false ,
+      message: ' File upload failed',
+      data: null,
+    };
+  }
+}
+
+export async function generatePdfSummary({
+  PdfText,
+  fileName,
+}: {
+  PdfText: string;
+  fileName: string;
+}) {
+  try {
     let summary;
     try {
       summary = await generatePdfSummaryWithGemini(PdfText);
       console.log(summary);
-      const fromattedFileName = formatFileNameAsTitle(fileName);
       return {
         success: true,
         message: "Summary generated successfully",
         data: {
-          title: fromattedFileName,
+          title: fileName,
           summary,
         },
       };

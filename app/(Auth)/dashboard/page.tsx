@@ -10,12 +10,11 @@ import { Button } from "@/components/ui/button";
 import { GetSummaries } from "@/lib/summaries";
 import { ItemsVariants } from "@/utils/constants";
 import { currentUser } from "@clerk/nextjs/server";
-import { ArrowRight, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
-  const uploadlimit = 5;
   const user = await currentUser();
   const userId = user?.id;
   if (!userId) {
@@ -78,23 +77,7 @@ export default async function DashboardPage() {
             initial="hidden"
             animate="visible"
             className="mb-6"
-          >
-            <MotionDiv className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-blue-800 font-medium">
-              <MotionPara className="text-sm">
-                You've reached the limit of {uploadlimit} uploads summaries on
-                the basic plan.
-                <Link
-                  href={"/#pricing"}
-                  className="text-blue-800 underline font-semibold underline-offset-4 inline-flex items-center "
-                >
-                  {" "}
-                  Click here to upgrade to Pro{" "}
-                  <ArrowRight className="w-4 h-4 inline-block" />{" "}
-                </Link>
-                for unlimited uploads.
-              </MotionPara>
-            </MotionDiv>
-          </MotionDiv>
+          ></MotionDiv>
           {summaries.length === 0 ? (
             <EmptySummaryState />
           ) : (

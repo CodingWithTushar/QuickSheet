@@ -31,7 +31,7 @@ const Uploadform = forwardRef<HTMLFormElement, UploadformProps>(
           )}
         />
         <Button disabled={isLoading} className="cursor-pointer">
-          {isLoading ? <></> : "Upload your PDF"}
+          {isLoading ? "Processing" : "Upload your PDF"}
         </Button>
       </form>
     );

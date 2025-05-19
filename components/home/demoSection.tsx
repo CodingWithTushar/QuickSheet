@@ -2,6 +2,7 @@ import { LucidePizza } from "lucide-react";
 import { MotionDiv, MotionH3, MotionSection } from "../common/motionWrapper";
 import { ContainerVariants } from "@/utils/constants";
 import { SummaryViewer } from "../summary/summaryViewer";
+import { DemoSummary } from "@/utils/demoSummary";
 
 export default function DemoSection() {
   return (
@@ -40,14 +41,16 @@ export default function DemoSection() {
               into an easy-to-read summary!
             </MotionH3>
           </MotionDiv>
-          <MotionDiv className="flex items-center justify-center px-2 sm:px-4 lg:px-6 "></MotionDiv>
+          <MotionDiv className="flex items-center justify-center px-2 sm:px-4 lg:px-6 ">
+
           <MotionDiv
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {/* <SummaryViewer summary={}/> */}
+            >
+            <SummaryViewer summary={DemoSummary}/>
           </MotionDiv>
+            </MotionDiv>
         </MotionDiv>
       </MotionSection>
     </>
