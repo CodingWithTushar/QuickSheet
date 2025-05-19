@@ -29,7 +29,7 @@ const Schema = z.object({
     ),
 });
 
-export const maxDuration = 20;
+export const maxDuration = 60;
 
 const UploadPage = () => {
   const formRef = useRef<HTMLFormElement>(null);
