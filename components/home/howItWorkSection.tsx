@@ -40,14 +40,14 @@ export default function HowItWorkSection() {
   return (
     <>
       <section className="relative overflow-hidden bg-gray-50">
-        <div className="py-12 lg:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-12">
+        <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8 lg:py-24 lg:pt-12">
           <BgGradient />
-          <div className="text-center mb-16">
+          <div className="mb-16 text-center">
             <MotionH2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-bold text-2xl uppercase mb-4 text-blue-500"
+              className="mb-4 text-2xl font-bold text-blue-500 uppercase"
             >
               HOW IT WORKS
             </MotionH2>
@@ -55,13 +55,13 @@ export default function HowItWorkSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="font-bold text-3xl max-w-2xl mx-auto "
+              className="mx-auto max-w-2xl text-3xl font-bold"
             >
               Transform any PDF into an easy-to-digest summary in three in three
               simple steps
             </MotionH3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-9 max-w-6xl mx-auto relative">
+          <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-9 md:grid-cols-3">
             {Steps.map((step, index) => (
               <MotionDiv
                 initial={{ opacity: 0, y: 30 }}
@@ -70,16 +70,16 @@ export default function HowItWorkSection() {
                 className="relative flex items-stretch"
                 key={index}
               >
-                <div className="relative p-7 bg-white/5 rounded-2xl backdrop-blur-xs border border-white/10 hover:border-blue-500/50  transition-colors group w-full duration-300">
-                  <div className="flex flex-col gap-1 h-full">
-                    <div className="flex items-center justify-center h-24 w-24 mx-auto rounded-2xl bg-gradient-to-br from-blue-300 to-transparent group-hover:bg-blue-300 transition-colors duration-300">
+                <div className="group relative w-full rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-xs transition-colors duration-300 hover:border-blue-500/50">
+                  <div className="flex h-full flex-col gap-1">
+                    <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-300 to-transparent transition-colors duration-300 group-hover:bg-blue-300">
                       {step.icon}
                     </div>
-                    <div className="flex flex-col flex-1 justify-between gap-2 text-blue-500">
-                      <h4 className="text-center font-bold text-xl">
+                    <div className="flex flex-1 flex-col justify-between gap-2 text-blue-500">
+                      <h4 className="text-center text-xl font-bold">
                         {step.label}
                       </h4>
-                      <p className="text-center text-gray-600 text-sm">
+                      <p className="text-center text-sm text-gray-600">
                         {step.description}
                       </p>
                     </div>
@@ -89,7 +89,7 @@ export default function HowItWorkSection() {
                   <MoveRightIcon
                     size={33}
                     strokeWidth={1}
-                    className="absolute hidden md:block h-screen top-1/2 -right-4 text-blue-500 transform -translate-y-1/2 z-10"
+                    className="absolute top-1/2 -right-4 z-10 hidden h-screen -translate-y-1/2 transform text-blue-500 md:block"
                   />
                 )}
               </MotionDiv>

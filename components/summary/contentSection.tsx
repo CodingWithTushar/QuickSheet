@@ -8,12 +8,12 @@ function EmojiPoint({ point }: { point: string }) {
   return (
     <MotionDiv
       variants={ItemsVariants}
-      className="group p-4   relative bg-linear-to-br from-gray-200/[0.8] to-gray-400/[0.03] rounded-2xl border border-gray-500/10 hover:shadow-lg transition-all"
+      className="group relative rounded-2xl border border-gray-500/10 bg-linear-to-br from-gray-200/[0.8] to-gray-400/[0.03] p-4 transition-all hover:shadow-lg"
     >
-      <div className="absolute inset-0 bg-linear-to-r from-gray-500/10 to-transparent opacity-0 hover:opacity-100 transition-opacity rounded-2xl" />
-      <div className="relative flex items-center gap-3 ">
-        <span className="text-lg lg:text-xl shrink-0 pt-1">{emoji}</span>
-        <p className="text-lg lg:text-xl text-muted-foreground/90 leading-relaxed">
+      <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-gray-500/10 to-transparent opacity-0 transition-opacity hover:opacity-100" />
+      <div className="relative flex items-center gap-3">
+        <span className="shrink-0 pt-1 text-lg lg:text-xl">{emoji}</span>
+        <p className="text-muted-foreground/90 text-lg leading-relaxed lg:text-xl">
           {text}
         </p>
       </div>
@@ -25,10 +25,10 @@ export const RegularPoint = ({ point }: { point: string }) => {
   return (
     <MotionDiv
       variants={ItemsVariants}
-      className="group p-4   relative bg-linear-to-br from-gray-200/[0.8] to-gray-400/[0.03] rounded-2xl border border-gray-500/10 hover:shadow-lg transition-all"
+      className="group relative rounded-2xl border border-gray-500/10 bg-linear-to-br from-gray-200/[0.8] to-gray-400/[0.03] p-4 transition-all hover:shadow-lg"
     >
-      <div className="absolute inset-0 bg-linear-to-r from-gray-500/10 to-transparent opacity-0 hover:opacity-100 transition-opacity rounded-2xl" />
-      <p className="relative text-lg lg:text-xl text-muted-foreground/90 leading-relaxed text-left">
+      <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-gray-500/10 to-transparent opacity-0 transition-opacity hover:opacity-100" />
+      <p className="text-muted-foreground/90 relative text-left text-lg leading-relaxed lg:text-xl">
         {point}
       </p>
     </MotionDiv>

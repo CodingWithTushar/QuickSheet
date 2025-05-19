@@ -25,9 +25,9 @@ const Uploadform = forwardRef<HTMLFormElement, UploadformProps>(
           required
           disabled={isLoading}
           className={cn(
-            `w-full flex items-center justify-end font-semibold bg-gradient-to-t from-blue-400 via-blue-300 to-blue-200 hover:bg-gradient-to-b hover:from-blue-400 hover:via-blue-300 hover:to-blue-200 transition-all duration-200 text-white cursor-pointer gap-1.5${
-              isLoading && "opacity-50 cursor-not-allowed"
-            }`
+            `flex w-full cursor-pointer items-center justify-end bg-gradient-to-t from-blue-400 via-blue-300 to-blue-200 font-semibold text-white transition-all duration-200 hover:bg-gradient-to-b hover:from-blue-400 hover:via-blue-300 hover:to-blue-200 gap-1.5${
+              isLoading && "cursor-not-allowed opacity-50"
+            }`,
           )}
         />
         <Button disabled={isLoading} className="cursor-pointer">
@@ -35,7 +35,7 @@ const Uploadform = forwardRef<HTMLFormElement, UploadformProps>(
         </Button>
       </form>
     );
-  }
+  },
 );
 
 Uploadform.displayName = "Uploadform";

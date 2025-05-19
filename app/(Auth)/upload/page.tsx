@@ -21,11 +21,11 @@ const Schema = z.object({
     .instanceof(File)
     .refine(
       (file) => file.size <= 24 * 1024 * 1024,
-      "🗒️File should be less then 24 MB "
+      "🗒️File should be less then 24 MB ",
     )
     .refine(
       (file) => file.type.startsWith("application/pdf"),
-      "🗒️Only PDFs are allowed"
+      "🗒️Only PDFs are allowed",
     ),
 });
 
@@ -43,8 +43,8 @@ const UploadPage = () => {
     onUploadError: (err) => {
       toast.error("❌Error Occurred while uploading ");
     },
-    onUploadBegin: () => {
-      console.log(`Upload has begun`);
+    onUploadBegin: (data) => {
+      console.log(`Upload has begun`, data);
     },
   });
 
@@ -61,7 +61,7 @@ const UploadPage = () => {
         toast.error("❌Invalid file");
         console.log(
           ValidatedFields.error.flatten().fieldErrors.file?.[0] ??
-            "InValid File"
+            "InValid File",
         );
         setisLoading(false);
         return;
@@ -78,7 +78,6 @@ const UploadPage = () => {
       toast.success("📄Processing PDF");
 
       const uploadFileUrl = response[0].ufsUrl;
-      console.log(uploadFileUrl);
 
       let storeResult: any;
       const fromattedFileName = formatFileNameAsTitle(file.name);
@@ -121,17 +120,17 @@ const UploadPage = () => {
   };
 
   return (
-    <section className="min-h-screen  ">
+    <section className="min-h-screen">
       <BgGradient />
       <MotionDiv
         variants={ContainerVariants}
         initial="hidden"
         animate="visible"
-        className="mx-auto  max-w-7xl px-6 py-24 sm:py-32"
+        className="mx-auto max-w-7xl px-6 py-24 sm:py-32"
       >
-        <div className="flex flex-col items-center justify-center gap-6 text-center ">
+        <div className="flex flex-col items-center justify-center gap-6 text-center">
           <Uploadheader />
-          <div className="w-full flex flex-col gap-8 mx-auto max-w-2xl">
+          <div className="mx-auto flex w-full max-w-2xl flex-col gap-8">
             <Uploadform
               isLoading={isLoading}
               ref={formRef}

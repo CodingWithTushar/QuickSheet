@@ -14,11 +14,7 @@ interface PdfSummaryPropes {
   fileName: string;
 }
 
-export async function generatePdfText({fileUrl} : {
-  fileUrl : string
- }
-) {
-
+export async function generatePdfText({ fileUrl }: { fileUrl: string }) {
   if (!fileUrl) {
     console.error("File URL not found!");
     return;
@@ -45,8 +41,8 @@ export async function generatePdfText({fileUrl} : {
     };
   } catch (e) {
     return {
-      success : false ,
-      message: ' File upload failed',
+      success: false,
+      message: " File upload failed",
       data: null,
     };
   }

@@ -40,9 +40,9 @@ export default function DeleteButton({ summaryId }: DeleteButtonProps) {
         <Button
           variant={"ghost"}
           size={"icon"}
-          className="text-gray-400 bg-gray-50 border border-gray-200 hover:text-blue-600 hover:bg-blue-50"
+          className="border border-gray-200 bg-gray-50 text-gray-400 hover:bg-blue-50 hover:text-blue-600"
         >
-          <Trash2 className="w-4 h-4 " />
+          <Trash2 className="h-4 w-4" />
         </Button>
       </DialogTrigger>
       <DialogContent>
@@ -56,14 +56,14 @@ export default function DeleteButton({ summaryId }: DeleteButtonProps) {
         <DialogFooter>
           <Button
             variant={"ghost"}
-            className="bg-gray-50 border border-gray-200 hover:text-gray-600 hover:bg-gray-50 cursor-pointer"
+            className="cursor-pointer border border-gray-200 bg-gray-50 hover:bg-gray-50 hover:text-gray-600"
             onClick={() => setOpen(false)}
           >
             Cancel
           </Button>
           <Button
             variant={"destructive"}
-            className="bg-gray-900 hover:bg-gray-600 cursor-pointer "
+            className="cursor-pointer bg-gray-900 hover:bg-gray-600"
             onClick={handleDelete}
           >
             {isPending ? "Deleting..." : "Delete"}

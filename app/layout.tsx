@@ -26,14 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    
       <html lang="en" className={fontSans.variable}>
         <body className="font-sans antialiased">
           <div className="relative flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
-            <Toaster position="bottom-right" reverseOrder={false}/>
+            <Toaster position="bottom-right" reverseOrder={false} />
           </div>
         </body>
       </html>

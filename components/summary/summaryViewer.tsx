@@ -10,8 +10,8 @@ import { easeInOut } from "motion/react";
 
 const SectionTitle = ({ title }: { title: string }) => {
   return (
-    <div className="flex flex-col gap-3 mb-6 sticky top-0 pt-2 pb-4 bg-background/80 backdrop-blur-xs z-10 ">
-      <h2 className="flex text-3xl lg:text-4xl text-center font-bold items-center justify-center gap-3 ">
+    <div className="bg-background/80 sticky top-0 z-10 mb-6 flex flex-col gap-3 pt-2 pb-4 backdrop-blur-xs">
+      <h2 className="flex items-center justify-center gap-3 text-center text-3xl font-bold lg:text-4xl">
         {title}
       </h2>
     </div>
@@ -33,18 +33,18 @@ export function SummaryViewer({ summary }: { summary: string }) {
     .map(parseSection);
 
   return (
-    <Card className="relative px-2 h-[500px] sm:h-[600px] lg:[h-700px] w-full xl:w-[600px] overflow-hidden bg-linear-to-br from-background via-background/95 to-blue-500/5 backdrop-blur-lg shadow-2xl rounded-3xl border border-blue-500/10 ">
+    <Card className="lg:[h-700px] from-background via-background/95 relative h-[500px] w-full overflow-hidden rounded-3xl border border-blue-500/10 bg-linear-to-br to-blue-500/5 px-2 shadow-2xl backdrop-blur-lg sm:h-[600px] xl:w-[600px]">
       <MotionDiv
         key={currentSection}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.3, ease: easeInOut }}
         exit={{ opacity: 0 }}
-        className="h-full overflow-y-auto scrollbar-hide pt-12 sm:pt-16 pb-20 sm:pb-24"
+        className="scrollbar-hide h-full overflow-y-auto pt-12 pb-20 sm:pt-16 sm:pb-24"
       >
         <ProgressBar sections={sections} currentSection={currentSection} />
 
-        <div className="px-4 sm:px-6 ">
+        <div className="px-4 sm:px-6">
           <SectionTitle title={sections[currentSection]?.title || ""} />
 
           <ContentSection

@@ -32,8 +32,8 @@ export default async function SummaryPage(props: {
   return (
     <div className="relative isolate min-h-screen bg-linear-to-b from-blue-50/40 to-white">
       <BgGradient />
-      <div className="container mx-auto flex flex-col gap-3  ">
-        <div className="px-4 sm:px-6 lg:px-8 py-6  sm:py-12 ld:py-24 ">
+      <div className="container mx-auto flex flex-col gap-3">
+        <div className="ld:py-24 px-4 py-6 sm:px-6 sm:py-12 lg:px-8">
           <MotionDiv
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,16 +58,16 @@ export default async function SummaryPage(props: {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="relative  mt-4 sm:mt-8 lg:mt-16"
+              className="relative mt-4 sm:mt-8 lg:mt-16"
             ></MotionDiv>
-            <div className="relative p-4 sm:p-6 lg:p-8 bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-xl border border-rose-100/30 transition-all duration-300 hover:shadow-2xl hover:bg-white/90 max-w-4xl mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-rose-50/50 via-orange-50 to-transparent opacity-50 rounded-2xl sm:rounded-3xl" />
+            <div className="relative mx-auto max-w-4xl rounded-2xl border border-rose-100/30 bg-white/80 p-4 shadow-xl backdrop-blur-md transition-all duration-300 hover:bg-white/90 hover:shadow-2xl sm:rounded-3xl sm:p-6 lg:p-8">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-rose-50/50 via-orange-50 to-transparent opacity-50 sm:rounded-3xl" />
 
-              <div className="absolute top-2 sm:top-4 right-2 sm:right-4 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground bg-white/90 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-xs">
-                <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-blue-400" />
+              <div className="text-muted-foreground absolute top-2 right-2 flex items-center gap-1.5 rounded-full bg-white/90 px-2 py-1 text-xs shadow-xs sm:top-4 sm:right-4 sm:gap-2 sm:px-3 sm:py-1.5 sm:text-sm">
+                <FileText className="h-3 w-3 text-blue-400 sm:h-4 sm:w-4" />
                 {word_count.toLocaleString()} words
               </div>
-              <div className="relative mt-8 sm:mt-6 flex justify-center">
+              <div className="relative mt-8 flex justify-center sm:mt-6">
                 <SummaryViewer summary={summary.summary_text} />
               </div>
             </div>

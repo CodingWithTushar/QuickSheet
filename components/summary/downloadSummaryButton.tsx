@@ -38,10 +38,10 @@ export default function DownloadSummaryButton({
   return (
     <Button
       size={"sm"}
-      className="cursor-pointer h-8 px-3 bg-blue-100 text-blue-600 hover:text-blue-700 hover:bg-blue-50 "
+      className="h-8 cursor-pointer bg-blue-100 px-3 text-blue-600 hover:bg-blue-50 hover:text-blue-700"
       onClick={handleDownload}
     >
-      <Download className="w-4 h-4 mr-1" /> Download Summary
+      <Download className="mr-1 h-4 w-4" /> Download Summary
     </Button>
   );
 }

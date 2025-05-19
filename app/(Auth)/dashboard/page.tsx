@@ -29,10 +29,10 @@ export default async function DashboardPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="container mx-auto flex flex-col gap-3  "
+        className="container mx-auto flex flex-col gap-3"
       >
-        <MotionDiv className="px-2 py-12 sm:py-24 ">
-          <MotionDiv className="flex gap-3  mb-8 justify-between items-center">
+        <MotionDiv className="px-2 py-12 sm:py-24">
+          <MotionDiv className="mb-8 flex items-center justify-between gap-3">
             <MotionDiv className="flex flex-col gap-2">
               <MotionH1
                 variants={ItemsVariants}
@@ -46,7 +46,7 @@ export default async function DashboardPage() {
                 variants={ItemsVariants}
                 initial="hidden"
                 animate="visible"
-                className="text-gray-600 "
+                className="text-gray-600"
               >
                 Transform your PDFs into concise, actionable insights.
               </MotionPara>
@@ -60,13 +60,13 @@ export default async function DashboardPage() {
             >
               <Button
                 variant={"link"}
-                className="bg-linear-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 hover:scale-105 transition-all duration-200 group hover:no-underline "
+                className="group bg-linear-to-r from-blue-500 to-blue-700 transition-all duration-200 hover:scale-105 hover:from-blue-600 hover:to-blue-800 hover:no-underline"
               >
                 <Link
                   href={"/upload"}
-                  className="flex items-center text-white font-semibold"
+                  className="flex items-center font-semibold text-white"
                 >
-                  <Plus className="w-5 h-5 mr-2 " />
+                  <Plus className="mr-2 h-5 w-5" />
                   New Summary
                 </Link>
               </Button>
@@ -81,7 +81,7 @@ export default async function DashboardPage() {
           {summaries.length === 0 ? (
             <EmptySummaryState />
           ) : (
-            <MotionDiv className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 sm:px-0 ">
+            <MotionDiv className="grid grid-cols-1 gap-4 sm:gap-6 sm:px-0 md:grid-cols-2 lg:grid-cols-3">
               {summaries.map((summary, index) => (
                 <SummaryCard key={index} summary={summary} />
               ))}

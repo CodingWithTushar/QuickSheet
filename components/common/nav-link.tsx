@@ -18,9 +18,9 @@ export default function NavLink({ href, children, className }: NavLinkProps) {
     <Link
       href={href}
       className={cn(
-        "trasition-colors font-semibold text-xl duration-200 text-gray-600 hover:text-blue-500",
+        "trasition-colors text-xl font-semibold text-gray-600 duration-200 hover:text-blue-500",
         isActive ? "text-blue-500" : "text-gray-700",
-        className
+        className,
       )}
     >
       {children}

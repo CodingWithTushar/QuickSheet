@@ -6,7 +6,7 @@ export async function fetchandExtractPdfText(fileUrl: string) {
   const bolb = await response.blob();
 
   const arrayBuffer = await bolb.arrayBuffer();
-  
+
   const loader = new PDFLoader(new Blob([arrayBuffer]));
 
   const docs = await loader.load();
