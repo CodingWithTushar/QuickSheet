@@ -9,3 +9,4 @@ export const MotionH3 = motion.h3;
 export const MotionSpan = motion.span;
 export const MotionPara = motion.p;
 export const MotionButton = motion.button;
+export const MotionFooter = motion.footer;
