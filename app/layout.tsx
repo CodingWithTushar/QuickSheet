@@ -5,6 +5,7 @@ import { Merriweather_Sans as FontSans } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "react-hot-toast";
+import { ORIGIN_URL } from "@/utils/helpers";
 
 const fontSans = FontSans({
   variable: "--font-merriweather-sans",
@@ -16,7 +17,17 @@ export const metadata: Metadata = {
   title: "Quick Sheet",
   description:
     "Quick Sheet - AI-powered document summarization for professionals. Transform lengthy documents into actionable insights in seconds, saving valuable time and boosting productivity.",
-  icons: "/favicon.png",
+  openGraph: {
+    images: [
+      {
+        url: "/openGraphImage.png",
+      },
+    ],
+  },
+  metadataBase: new URL(ORIGIN_URL),
+  alternates: {
+    canonical: ORIGIN_URL,
+  },
 };
 
 export default function RootLayout({
