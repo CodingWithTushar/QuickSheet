@@ -24,10 +24,10 @@ export const metadata: Metadata = {
       },
     ],
   },
-  metadataBase: new URL(ORIGIN_URL),
-  alternates: {
-    canonical: ORIGIN_URL,
-  },
+  // metadataBase: new URL(ORIGIN_URL),
+  // alternates: {
+  //   canonical: ORIGIN_URL,
+  // },
 };
 
 export default function RootLayout({
