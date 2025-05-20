@@ -21,9 +21,9 @@ const eslintConfig = [
     rules: {
       "prettier/prettier": "error",
       "react/no-escape-character": "off",
-      'tailwindcss/no-custom-classname': 'off',
-      'tailwindcss/classnames-order': 'off',
-      'react/no-unescaped-entities': 'off',
+      "tailwindcss/no-custom-classname": "off",
+      "tailwindcss/classnames-order": "off",
+      "react/no-unescaped-entities": "off",
     },
   }),
 ];
