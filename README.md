@@ -24,15 +24,15 @@ AI Processing: Langchain
 Database ORM: Prisma (with PostgreSQL )
 
 📁 App Routes & Load Sizes
-Route	Size	First Load JS
-/	195 B	152 kB
-/_not-found	977 B	101 kB
-/api/uploadthing	136 B	101 kB
-/dashboard	12.9 kB	166 kB
-/sign-in/[[...sign-in]]	342 B	131 kB
-/sign-up/[[...sign-up]]	342 B	131 kB
-/summaries/[id]	806 B	157 kB
-/upload	29.8 kB	180 kB
+Route Size First Load JS
+/ 195 B 152 kB
+/\_not-found 977 B 101 kB
+/api/uploadthing 136 B 101 kB
+/dashboard 12.9 kB 166 kB
+/sign-in/[[...sign-in]] 342 B 131 kB
+/sign-up/[[...sign-up]] 342 B 131 kB
+/summaries/[id] 806 B 157 kB
+/upload 29.8 kB 180 kB
 
 Shared JS (First Load): 100 kB
 
@@ -57,25 +57,32 @@ View Summaries: Summaries are accessible via the /dashboard and individual /summ
 bash
 Copy
 Edit
+
 # Clone the repo
+
 git clone https://github.com/CodingWithTushar/QuickSheet.git
 cd QuickSheet
 
 # Install dependencies
+
 npm install
 
 # Set up environment variables
+
 cp .env.example .env
+
 # Fill in your credentials for Clerk, UploadThing, Prisma, etc.
 
 # Push database schema
+
 npx prisma db push
 
 # Start the development server
+
 npm run dev
 📸 Screenshots (Optional)
 You can add preview images or GIFs here to show how the app looks and functions.
 
 🧑‍💻 Author
-Tushar 
+Tushar
 Built with ❤️ using TypeScript, AI, and modern web technologies.

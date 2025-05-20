@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Quick Sheet",
   description:
     "Quick Sheet - AI-powered document summarization for professionals. Transform lengthy documents into actionable insights in seconds, saving valuable time and boosting productivity.",
+  icons: {
+    icon: "/favicon.png",
+  },
   openGraph: {
     images: [
       {
@@ -24,10 +27,10 @@ export const metadata: Metadata = {
       },
     ],
   },
-  // metadataBase: new URL(ORIGIN_URL),
-  // alternates: {
-  //   canonical: ORIGIN_URL,
-  // },
+  metadataBase: new URL(ORIGIN_URL),
+  alternates: {
+    canonical: ORIGIN_URL,
+  },
 };
 
 export default function RootLayout({
